@@ -23,4 +23,8 @@ RUN sarif-verify check fixtures/good.sarif \
  && (python -m sarif_verify.demo; test $? -eq 1)
 
 WORKDIR /work
-CMD ["sarif-verify", "check", "/app/fixtures/good.sarif"]
+
+# ENTRYPOINT so `docker run image check /work/log.sarif` works as expected;
+# the default command validates the bundled clean fixture.
+ENTRYPOINT ["sarif-verify"]
+CMD ["check", "/app/fixtures/good.sarif"]

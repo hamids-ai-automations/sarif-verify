@@ -114,10 +114,11 @@ docker build -t sarif-verify .
 docker run --rm -v "$PWD:/work" sarif-verify check /work/results.sarif
 ```
 
-The image self-tests at build time (the bundled clean log must pass, the demo
-must exit `1`), and starting it without arguments validates
-`/app/fixtures/good.sarif`, so `docker run --rm sarif-verify` proves the tool
-works with zero setup.
+The image has `sarif-verify` as its entrypoint, so the usual Docker pattern
+applies: arguments after the image name are passed to the CLI. The image
+self-tests at build time (the bundled clean log must pass, the demo must exit
+`1`), and starting it without arguments validates `/app/fixtures/good.sarif`,
+so `docker run --rm sarif-verify` proves the tool works with zero setup.
 
 ## Working demo
 
