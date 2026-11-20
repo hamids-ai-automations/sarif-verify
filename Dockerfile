@@ -23,4 +23,4 @@ RUN sarif-verify check fixtures/good.sarif \
  && (python -m sarif_verify.demo; test $? -eq 1)
 
 WORKDIR /work
-CMD ["sarif-verify", "check", "fixtures/good.sarif"]
+CMD ["sarif-verify", "check", "/app/fixtures/good.sarif"]

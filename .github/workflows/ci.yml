@@ -61,5 +61,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build image (includes build-time self-test)
         run: docker build -t sarif-verify:ci .
-      - name: Run container against the bundled fixture
-        run: docker run --rm sarif-verify:ci check fixtures/good.sarif
+      - name: Run container default command
+        run: docker run --rm sarif-verify:ci
+      - name: Run container against the mounted fixture
+        run: docker run --rm -v "$PWD:/work" sarif-verify:ci check /work/fixtures/good.sarif
