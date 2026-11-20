@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sarif-verify"
+version = "0.1.0"
+description = "Validate SARIF 2.1.0 logs against the GitHub code-scanning contract before uploading them."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Muhammad Hamid" }]
+keywords = ["sarif", "code-scanning", "github-actions", "security", "lint"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.scripts]
+sarif-verify = "sarif_verify.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/hamids-ai-automations/sarif-verify"
+Issues = "https://github.com/hamids-ai-automations/sarif-verify/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

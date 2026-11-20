@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "envscope",
+          "version": "0.1.1",
+          "informationUri": "https://github.com/hamids-ai-automations/envscope",
+          "rules": [
+            {"id": "missing", "name": "MissingKey"},
+            {"id": "extra", "name": "UnexpectedKey"}
+          ]
+        }
+      },
+      "columnKind": "utf16CodeUnits",
+      "results": [
+        {
+          "ruleId": "missing",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {"text": "missing key API_TOKEN"},
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {"uri": ".env"},
+                "region": {"startLine": 4}
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "extra",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {"text": "key EXTRA_FLAG is set in .env but not in .env.example or schema"},
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {"uri": ".env"},
+                "region": {"startLine": 5, "endLine": 5}
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
